@@ -1,33 +1,42 @@
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include <stdlib.h> 
+#include <conio.h>
 
-# Precompiled Headers
-*.gch
-*.pch
+int isprime(int number) {
+	int k = 2;
+	int i = 1;
+	while (k <= number / 2 ) {
+		if (number % k == 0) {
+			i = 0;
+			break;
+		}
+		k++;
+	}
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
+	return i;
+}
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
+main()
+{
+	int m[100];
+	int i = 0;
+	while (i < 100) {
+		int r = rand() % 100;		
+		printf("%02d ", r);
+		int p = isprime(r);
+		if (p == 1) {
+			m[i] = r;
+			i++;
+		}
+	}
 
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
+	printf("\n\n");
 
-# Debug files
-*.dSYM/
-*.su
+	for (int i = 0; i < 100; i++) {
+		printf("%02d ", m[i]);
+	}
+
+	printf("\n");
+	getchar();	
+}
